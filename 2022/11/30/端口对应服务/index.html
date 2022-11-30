@@ -16,36 +16,22 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="声明1注：本文所介绍所有工具仅限于安全研究和教学，用户承担因使用此工具而导致的所有法律和相关责任！ 作者不承担任何法律和相关责任！  前言本次记录一下最近在搞的微信小程序渗透测试，权当记录学习，之前一直都是通过使用真机进行操作，但是仅限于对流量进行分析，并且通过微信的开发者模式进行调试，本次通过使用模拟器进行操作，并且通过反编译抓取小程序代码，进行代码审计 1、环境准备本次使用夜神模拟器进行操作，">
+    <meta name="description" content="端口对应服务记录下一些端口对应什么服务，方便后续查询！     端口 服务 渗透用途    tcp 20,21 FTP 允许匿名的上传下载,爆破,嗅探,win提权,远程执行(proftpd 1.3.5),各类后门(proftpd,vsftp 2.3.4)   tcp 22 SSH 可根据已搜集到的信息尝试爆破,v1版本可中间人,ssh隧道及内网代理转发,文件传输等等   tcp 23 Telnet">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈微信小程序渗透测试">
-<meta property="og:url" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:title" content="端口对应服务">
+<meta property="og:url" content="http://example.com/2022/11/30/%E7%AB%AF%E5%8F%A3%E5%AF%B9%E5%BA%94%E6%9C%8D%E5%8A%A1/index.html">
 <meta property="og:site_name" content="nf592">
-<meta property="og:description" content="声明1注：本文所介绍所有工具仅限于安全研究和教学，用户承担因使用此工具而导致的所有法律和相关责任！ 作者不承担任何法律和相关责任！  前言本次记录一下最近在搞的微信小程序渗透测试，权当记录学习，之前一直都是通过使用真机进行操作，但是仅限于对流量进行分析，并且通过微信的开发者模式进行调试，本次通过使用模拟器进行操作，并且通过反编译抓取小程序代码，进行代码审计 1、环境准备本次使用夜神模拟器进行操作，">
+<meta property="og:description" content="端口对应服务记录下一些端口对应什么服务，方便后续查询！     端口 服务 渗透用途    tcp 20,21 FTP 允许匿名的上传下载,爆破,嗅探,win提权,远程执行(proftpd 1.3.5),各类后门(proftpd,vsftp 2.3.4)   tcp 22 SSH 可根据已搜集到的信息尝试爆破,v1版本可中间人,ssh隧道及内网代理转发,文件传输等等   tcp 23 Telnet">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/1.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/2.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/3.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/4.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/5.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/6.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/7.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/8.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/9.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/10.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/11.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/13.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/12.png">
-<meta property="article:published_time" content="2022-11-17T12:14:41.000Z">
-<meta property="article:modified_time" content="2022-11-18T03:15:27.879Z">
+<meta property="article:published_time" content="2022-11-30T01:51:22.000Z">
+<meta property="article:modified_time" content="2022-11-30T01:54:25.414Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="渗透测试">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/1.png">
   
   
   
-  <title>浅谈微信小程序渗透测试 - nf592</title>
+  <title>端口对应服务 - nf592</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -210,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="浅谈微信小程序渗透测试"></span>
+            <span id="subtitle" data-typed-text="端口对应服务"></span>
           
         </div>
 
@@ -221,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-17 20:14" pubdate>
-          2022年11月17日 晚上
+        <time datetime="2022-11-30 09:51" pubdate>
+          2022年11月30日 上午
         </time>
       </span>
     
@@ -233,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          2.1k 字
         
       </span>
     
@@ -244,7 +230,7 @@
         
         
         
-          10 分钟
+          18 分钟
         
       </span>
     
@@ -282,68 +268,327 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">浅谈微信小程序渗透测试</h1>
+            <h1 style="display: none">端口对应服务</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">注：本文所介绍所有工具仅限于安全研究和教学，用户承担因使用此工具而导致的所有法律和相关责任！ 作者不承担任何法律和相关责任！<br></code></pre></td></tr></table></figure>
-
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本次记录一下最近在搞的微信小程序渗透测试，权当记录学习，之前一直都是通过使用真机进行操作，但是仅限于对流量进行分析，并且通过微信的开发者模式进行调试，本次通过使用模拟器进行操作，并且通过反编译抓取小程序代码，进行代码审计</p>
-<h2 id="1、环境准备"><a href="#1、环境准备" class="headerlink" title="1、环境准备"></a>1、环境准备</h2><p>本次使用夜神模拟器进行操作，但是需要注意将模拟器开启root，防止访问部分目录文件无权限访问</p>
-<p>登录微信，选择一个微信小程序进行打开</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/1.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/2.png" srcset="/img/loading.gif" lazyload class="">
-
-
-
-<p>打开一个小程序之后，一定要等待加载完，即将小程序代码文件从服务端下载到本地</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/3.png" srcset="/img/loading.gif" lazyload class="">
-
-<h2 id="2、获取-wxapkg文件"><a href="#2、获取-wxapkg文件" class="headerlink" title="2、获取.wxapkg文件"></a>2、获取.wxapkg文件</h2><p>打开文件管理器，在<code>data/data/com.tencent.mm/MicroMsg</code>这个目录下将会生成一个<code>md5</code>加密之后的字符串文件夹，也就是当前小程序的所有文件，如果看到有多个<code>md5</code>加密的文件夹，不确定是哪一个可以先进行删除，然后再重新进入小程序</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/4.png" srcset="/img/loading.gif" lazyload class="">
-
-
-
-<p>在该文件夹下的<code>appbrand/pkg</code>目录下找到<code>.wxapkg</code>后缀结尾的文件，其中比较小的文件就是小程序本身的代码文件，其余的是一些公共三方模板库文件，可以不用管，然后勾选当前文件</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/5.png" srcset="/img/loading.gif" lazyload class="">
-
-
-
-<p>然后到根目录下的<code>mnt/shared/App</code>目录，打开右上角三个<code>.</code>的功能菜单选择粘贴选择项，将文件复制到该文件夹</p>
-<p>为什么需要复制到这个文件夹目录下，是因为这个文件夹是模拟器和电脑的共享文件夹</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/6.png" srcset="/img/loading.gif" lazyload class="">
-
-
-
-<p>点击右侧图标，打开本地目录文件夹</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/7.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/8.png" srcset="/img/loading.gif" lazyload class="">
-
-<h2 id="3、反编译"><a href="#3、反编译" class="headerlink" title="3、反编译"></a>3、反编译</h2><p>这里再将<code>.wxapkg</code>文件拖入到反编译工具中，这里用大帅师傅写的工具，不得不说，大帅师傅YYDS，<a target="_blank" rel="noopener" href="https://github.com/ezshine/wxapkg-convertor/releases">github连接</a>，这里需要注意一点，该工具需要<code>nodejs</code>环境，如果本机没有安装，需要安装才能导出反编译之后的文件，否则工具会显示反编译成功但是并无反编译之后的代码文件</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/9.png" srcset="/img/loading.gif" lazyload class="">
-
-
-
-<p>接下来就可以查看<code>js</code>文件代码了，并且可以进行代码审计查看接口信息</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/10.png" srcset="/img/loading.gif" lazyload class="">
-
-<h2 id="4、工具调试"><a href="#4、工具调试" class="headerlink" title="4、工具调试"></a>4、工具调试</h2><p>这里使用微信开发者工具调试，<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html">下载地址</a>，选择一个版本即可</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/11.png" srcset="/img/loading.gif" lazyload class="">
-
-<h3 id="4-1调试过程"><a href="#4-1调试过程" class="headerlink" title="4.1调试过程"></a>4.1调试过程</h3><p>下载安装后打开，导入反编译的源码</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/13.png" srcset="/img/loading.gif" lazyload class="">
-
-<p>点击编译，编译完成之后就可以调试了，可以看看人家的代码是怎么写的，如果代码存在混淆等情况，可能编译不成功，不过也不太影响我们测试，因为我们也主要是分析各个接口的东西；如果有加密什么的，能调试就很方便</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/12.png" srcset="/img/loading.gif" lazyload class="">
-
-<h2 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h2><p>如果是要进行支付宝小程序测试，获取源码，大体和微信小程序差不多，仅仅是路径略微不同，支付宝小程序路径为</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">/data/data/com.eg.android.AlipayGphone/files/nebulaInstallApps<br></code></pre></td></tr></table></figure>
-
-<p>另外具体目录名为小程序<strong>tinyAppId值</strong>，其中的tar包即为源码文件</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过当前获取小程序源码包的方式，其实能极大的挖掘到部分漏洞信息，相比于流量分析，能够更多的查询到接口地址，从而造成一些未授权或者是信息泄露等漏洞</p>
+                <h2 id="端口对应服务"><a href="#端口对应服务" class="headerlink" title="端口对应服务"></a>端口对应服务</h2><p>记录下一些端口对应什么服务，方便后续查询！</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>端口</th>
+<th>服务</th>
+<th>渗透用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tcp 20,21</td>
+<td>FTP</td>
+<td>允许匿名的上传下载,爆破,嗅探,win提权,远程执行(proftpd 1.3.5),各类后门(proftpd,vsftp 2.3.4)</td>
+</tr>
+<tr>
+<td>tcp 22</td>
+<td>SSH</td>
+<td>可根据已搜集到的信息尝试爆破,v1版本可中间人,ssh隧道及内网代理转发,文件传输等等</td>
+</tr>
+<tr>
+<td>tcp 23</td>
+<td>Telnet</td>
+<td>爆破,嗅探,一般常用于路由,交换登陆,可尝试弱口令</td>
+</tr>
+<tr>
+<td>tcp 25</td>
+<td>SMTP</td>
+<td>邮件伪造,vrfy&#x2F;expn查询邮件用户信息,可使用smtp-user-enum工具来自动跑</td>
+</tr>
+<tr>
+<td>tcp&#x2F;udp 53</td>
+<td>DNS</td>
+<td>允许区域传送,dns劫持,缓存投毒,欺骗以及各种基于dns隧道的远控</td>
+</tr>
+<tr>
+<td>tcp&#x2F;udp 69</td>
+<td>TFTP</td>
+<td>尝试下载目标及其的各类重要配置文件</td>
+</tr>
+<tr>
+<td>tcp 80-89,443,8440-8450,8080-8089</td>
+<td>各种常用的Web服务端口</td>
+<td>可尝试经典的topn,vpn,owa,webmail,目标oa,各类Java控制台,各类服务器Web管理面板,各类Web中间件漏洞利用,各类Web框架漏洞利用等等……</td>
+</tr>
+<tr>
+<td>tcp 110</td>
+<td>POP3</td>
+<td>可尝试爆破,嗅探</td>
+</tr>
+<tr>
+<td>tcp 111,2049</td>
+<td>NFS</td>
+<td>权限配置不当</td>
+</tr>
+<tr>
+<td>tcp 137,139,445</td>
+<td>Samba</td>
+<td>可尝试爆破以及smb自身的各种远程执行类漏洞利用,如,ms08-067,ms17-010,嗅探等……</td>
+</tr>
+<tr>
+<td>tcp 143</td>
+<td>IMAP</td>
+<td>可尝试爆破</td>
+</tr>
+<tr>
+<td>udp 161</td>
+<td>SNMP</td>
+<td>爆破默认团队字符串,搜集目标内网信息</td>
+</tr>
+<tr>
+<td>tcp 389</td>
+<td>LDAP</td>
+<td>ldap注入,允许匿名访问,弱口令，（通过LdapBrowser工具直接连入）</td>
+</tr>
+<tr>
+<td>tcp 445</td>
+<td>SMB</td>
+<td>ms17_010远程代码执行</td>
+</tr>
+<tr>
+<td>tcp 512,513,514</td>
+<td>Linux rexec</td>
+<td>可爆破,rlogin登陆</td>
+</tr>
+<tr>
+<td>tcp 873</td>
+<td>Rsync</td>
+<td>匿名访问,文件上传,未授权访问</td>
+</tr>
+<tr>
+<td>tcp 1090&#x2F;1099</td>
+<td>Java-rmi</td>
+<td>JAVA反序列化远程命令执行漏洞</td>
+</tr>
+<tr>
+<td>tcp 1194</td>
+<td>OpenVPN</td>
+<td>想办法钓VPN账号,进内网</td>
+</tr>
+<tr>
+<td>tcp 1352</td>
+<td>Lotus</td>
+<td>弱口令,信息泄漏,爆破</td>
+</tr>
+<tr>
+<td>tcp 1433</td>
+<td>SQL Server</td>
+<td>注入,提权,sa弱口令,爆破</td>
+</tr>
+<tr>
+<td>tcp 1521</td>
+<td>Oracle</td>
+<td>tns爆破,注入,弹shell…</td>
+</tr>
+<tr>
+<td>tcp 1500</td>
+<td>ISPmanager</td>
+<td>弱口令</td>
+</tr>
+<tr>
+<td>tcp 1723</td>
+<td>PPTP</td>
+<td>爆破,想办法钓VPN账号,进内网</td>
+</tr>
+<tr>
+<td>tcp 2082,2083</td>
+<td>cPanel</td>
+<td>弱口令</td>
+</tr>
+<tr>
+<td>tcp 2181</td>
+<td>ZooKeeper</td>
+<td>未授权访问</td>
+</tr>
+<tr>
+<td>tcp 2601,2604</td>
+<td>Zebra</td>
+<td>默认密码zerbra</td>
+</tr>
+<tr>
+<td>tcp 3128</td>
+<td>Squid</td>
+<td>弱口令</td>
+</tr>
+<tr>
+<td>tcp 3312,3311</td>
+<td>kangle</td>
+<td>弱口令</td>
+</tr>
+<tr>
+<td>tcp 3306</td>
+<td>MySQL</td>
+<td>注入,提权,爆破、写shell</td>
+</tr>
+<tr>
+<td>tcp 3389</td>
+<td>Windows rdp</td>
+<td>shift后门[需要03以下的系统],爆破,ms12-020、CVE-2019-0708远程代码执行</td>
+</tr>
+<tr>
+<td>tcp 3690</td>
+<td>SVN</td>
+<td>svn泄露,未授权访问</td>
+</tr>
+<tr>
+<td>tcp 4848</td>
+<td>GlassFish</td>
+<td>弱口令</td>
+</tr>
+<tr>
+<td>tcp 5000</td>
+<td>Sybase&#x2F;DB2</td>
+<td>爆破,注入</td>
+</tr>
+<tr>
+<td>tcp 5432</td>
+<td>PostgreSQL</td>
+<td>爆破,注入,弱口令</td>
+</tr>
+<tr>
+<td>tcp 5900,5901,5902</td>
+<td>VNC</td>
+<td>弱口令爆破</td>
+</tr>
+<tr>
+<td>tcp 5984</td>
+<td>CouchDB</td>
+<td>未授权导致的任意指令执行</td>
+</tr>
+<tr>
+<td>tcp 6379</td>
+<td>Redis</td>
+<td>可尝试未授权访问,弱口令爆破</td>
+</tr>
+<tr>
+<td>tcp 7001,7002</td>
+<td>WebLogic</td>
+<td>Java反序列化,弱口令</td>
+</tr>
+<tr>
+<td>tcp 7778</td>
+<td>Kloxo</td>
+<td>主机面板登录</td>
+</tr>
+<tr>
+<td>tcp 8000</td>
+<td>Ajenti</td>
+<td>弱口令</td>
+</tr>
+<tr>
+<td>tcp 8443</td>
+<td>Plesk</td>
+<td>弱口令</td>
+</tr>
+<tr>
+<td>tcp 8069</td>
+<td>Zabbix</td>
+<td>远程执行,SQL注入</td>
+</tr>
+<tr>
+<td>tcp 8080-8089</td>
+<td>Tomcat&#x2F;JBoss&#x2F;Resin&#x2F;Jetty&#x2F;Jenkins</td>
+<td>反序列化,控制台弱口令,PUT文件上传</td>
+</tr>
+<tr>
+<td>tcp 9080-9081,9090</td>
+<td>WebSphere</td>
+<td>Java反序列化&#x2F;弱口令</td>
+</tr>
+<tr>
+<td>tcp 9200,9300</td>
+<td>ElasticSearch</td>
+<td>远程执行</td>
+</tr>
+<tr>
+<td>tcp 11211</td>
+<td>Memcached</td>
+<td>未授权访问</td>
+</tr>
+<tr>
+<td>tcp 27017,27018</td>
+<td>MongoDB</td>
+<td>爆破,未授权访问</td>
+</tr>
+<tr>
+<td>tcp 50070,50030</td>
+<td>Hadoop</td>
+<td>默认端口未授权访问</td>
+</tr>
+<tr>
+<td>tcp 1352</td>
+<td>Lotus Domino邮件服务</td>
+<td>爆破：弱口令、信息泄漏：源代码</td>
+</tr>
+<tr>
+<td>tcp 5632</td>
+<td>PcAnywhere服务</td>
+<td>爆破弱口令</td>
+</tr>
+<tr>
+<td>tcp 5900</td>
+<td>VNC</td>
+<td>爆破：弱口令、认证绕过</td>
+</tr>
+<tr>
+<td>tcp 8161</td>
+<td>ActiveMQ</td>
+<td>admin&#x2F;admin、任意文件写入、反序列化</td>
+</tr>
+<tr>
+<td>tcp 9043</td>
+<td>WebSphere控制台</td>
+<td>控制台弱口令<a target="_blank" rel="noopener" href="https://blog.gm7.org/%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93/01.%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/01.%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/1.%E8%B5%84%E4%BA%A7%E6%94%B6%E9%9B%86/03.IP%E6%AE%B5%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/07.%E7%AB%AF%E5%8F%A3%E5%AF%B9%E5%BA%94%E6%B8%97%E9%80%8F%EF%BC%88%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%A4%87%E5%BF%98%E5%BD%95%EF%BC%89.html">https:&#x2F;&#x2F;:9043&#x2F;ibm&#x2F;console&#x2F;logon.jsp、远程代码执行</a></td>
+</tr>
+<tr>
+<td>tcp 50000</td>
+<td>SAP</td>
+<td>远程代码执行</td>
+</tr>
+<tr>
+<td>tcp 50070</td>
+<td>hadoop</td>
+<td>未授权访问</td>
+</tr>
+<tr>
+<td>tcp 9000</td>
+<td>fastcgi</td>
+<td>远程命令执行</td>
+</tr>
+<tr>
+<td>tcp 9090</td>
+<td>Websphere</td>
+<td>控制台爆破&#x2F;java反序列化&#x2F;弱口令</td>
+</tr>
+<tr>
+<td>tcp 8083&#x2F;8086</td>
+<td>influxDB</td>
+<td>未授权访问</td>
+</tr>
+<tr>
+<td>tcp 5000</td>
+<td>sybase&#x2F;DB2数据库</td>
+<td>爆破&#x2F;注入&#x2F;提权</td>
+</tr>
+<tr>
+<td>tcp 2375</td>
+<td>docker remote api</td>
+<td>未授权访问</td>
+</tr>
+<tr>
+<td>tcp 1080</td>
+<td>socket</td>
+<td>爆破</td>
+</tr>
+</tbody></table>
 
                 
               </div>
@@ -368,8 +613,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>浅谈微信小程序渗透测试</div>
-      <div>http://example.com/2022/11/17/浅谈微信小程序渗透测试/</div>
+      <div>端口对应服务</div>
+      <div>http://example.com/2022/11/30/端口对应服务/</div>
     </div>
     <div class="license-meta">
       
@@ -381,7 +626,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年11月17日</div>
+          <div>2022年11月30日</div>
         </div>
       
       
@@ -413,18 +658,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/30/%E7%AB%AF%E5%8F%A3%E5%AF%B9%E5%BA%94%E6%9C%8D%E5%8A%A1/" title="端口对应服务">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">端口对应服务</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/" title="制作excel后门文件">
-                        <span class="hidden-mobile">制作excel后门文件</span>
+                      <a href="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" title="浅谈微信小程序渗透测试">
+                        <span class="hidden-mobile">浅谈微信小程序渗透测试</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

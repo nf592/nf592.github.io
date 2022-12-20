@@ -16,25 +16,18 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="声明1注：本文所介绍所有工具仅限于安全研究和教学，用户承担因使用此工具而导致的所有法律和相关责任！ 作者不承担任何法律和相关责任！  前言本次实验学习所面对得场景是，对于目标站点进行渗透测试时，发现文件上传处仅仅只能上传PDF文本类型，于是就查阅发现有相关手法，便进行操作复刻。 0x01，创建文件使用迅捷PDF打开或者创建一个新的文件   选择属性，会在页面右侧打开属性窗口   然后再在页面属性窗">
+    <meta name="description" content="有东西被加密了, 请输入密码查看.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过恶意PDF执行XSS漏洞">
 <meta property="og:url" content="http://example.com/2022/12/12/%E9%80%9A%E8%BF%87%E6%81%B6%E6%84%8FPDF%E6%89%A7%E8%A1%8CXSS%E6%BC%8F%E6%B4%9E/index.html">
 <meta property="og:site_name" content="nf592">
-<meta property="og:description" content="声明1注：本文所介绍所有工具仅限于安全研究和教学，用户承担因使用此工具而导致的所有法律和相关责任！ 作者不承担任何法律和相关责任！  前言本次实验学习所面对得场景是，对于目标站点进行渗透测试时，发现文件上传处仅仅只能上传PDF文本类型，于是就查阅发现有相关手法，便进行操作复刻。 0x01，创建文件使用迅捷PDF打开或者创建一个新的文件   选择属性，会在页面右侧打开属性窗口   然后再在页面属性窗">
+<meta property="og:description" content="有东西被加密了, 请输入密码查看.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/12/12/%E9%80%9A%E8%BF%87%E6%81%B6%E6%84%8FPDF%E6%89%A7%E8%A1%8CXSS%E6%BC%8F%E6%B4%9E/1.png">
-<meta property="og:image" content="http://example.com/2022/12/12/%E9%80%9A%E8%BF%87%E6%81%B6%E6%84%8FPDF%E6%89%A7%E8%A1%8CXSS%E6%BC%8F%E6%B4%9E/2.png">
-<meta property="og:image" content="http://example.com/2022/12/12/%E9%80%9A%E8%BF%87%E6%81%B6%E6%84%8FPDF%E6%89%A7%E8%A1%8CXSS%E6%BC%8F%E6%B4%9E/3.png">
-<meta property="og:image" content="http://example.com/2022/12/12/%E9%80%9A%E8%BF%87%E6%81%B6%E6%84%8FPDF%E6%89%A7%E8%A1%8CXSS%E6%BC%8F%E6%B4%9E/4.png">
-<meta property="og:image" content="http://example.com/2022/12/12/%E9%80%9A%E8%BF%87%E6%81%B6%E6%84%8FPDF%E6%89%A7%E8%A1%8CXSS%E6%BC%8F%E6%B4%9E/5.png">
-<meta property="og:image" content="http://example.com/2022/12/12/%E9%80%9A%E8%BF%87%E6%81%B6%E6%84%8FPDF%E6%89%A7%E8%A1%8CXSS%E6%BC%8F%E6%B4%9E/7.png">
 <meta property="article:published_time" content="2022-12-12T02:39:11.000Z">
-<meta property="article:modified_time" content="2022-12-12T02:47:20.743Z">
+<meta property="article:modified_time" content="2022-12-20T01:25:56.861Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="渗透测试">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/12/12/%E9%80%9A%E8%BF%87%E6%81%B6%E6%84%8FPDF%E6%89%A7%E8%A1%8CXSS%E6%BC%8F%E6%B4%9E/1.png">
   
   
   
@@ -226,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          743 字
+          7.4k 字
         
       </span>
     
@@ -237,7 +230,7 @@
         
         
         
-          7 分钟
+          62 分钟
         
       </span>
     
@@ -278,42 +271,22 @@
             <h1 style="display: none">通过恶意PDF执行XSS漏洞</h1>
             
             
-              <div class="markdown-body">
-                
-                <h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">注：本文所介绍所有工具仅限于安全研究和教学，用户承担因使用此工具而导致的所有法律和相关责任！ 作者不承担任何法律和相关责任！<br></code></pre></td></tr></table></figure>
+              
+              <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="8bdaf68a579f2b8f1a5d1454f68042e908ae85cadf8a43cfc8372e558bea827c">18cbfeb9d2ccb2d0f0d0159ccbc79c37a55c068a517e5d3eab5a405d1b5df29392f76943596572b1b298c065608a0a9f9245ada96ca56406cfa20a127c9cdfc61238a7f9888324497c4c2034bb775dca8acf93b3667004a33bb40a9d4d1248119734f2a57eb713e04ba3b63aeec959cc2289bc2ac48205f4bab03b4e0fc5fb631b76f82f11685f26cd4ac6662113eb7399f413deef4b88093d4fc24a7339d8bb12c03acf6fe94e7a969a2d16fca6a945a92b35a389f9ad559a53782d16859da84848d87555a27d1b161c130c0465c318c5c27395b7340219e2d0059fc6b3149364698d80806356f5fab59765f65f832c976b5994986c3bc2d3149a21c00f9d6a44cd70c0578bc34cbe5db70b0e12b085c023b6633e41fe16a9248d8ef0e7582bf3f622cda1b5888562e536322ab0ab90fb9f820b4ad9ace7e27ce3c39d2ba07ccbee24ff7d5916a6257a11b869089cb858b03609376e271c582caf10d7d4826bded4c28fa624e5ad43212207bc447ce2de87dd2bbf24c6b07d91b62bf4bc779f5533ffacecb16fd6885181f846b4b3b03a02906e9df9b62c2b7703cf3ab02aeccd5f3f091beab19eef470b6a5e7536d6f295d19dc08e80c6fcdffa91fa1519f268a1a9d5e59b9f6ed7297e2ce2d0438d1aababf55ec6d2ad019df80c0905c9045e2c4c5d5eeee5a558838a796ca6bb58507acd83158f7dee260a7378ba0904eef9de82bed544034e74a656b19254375378694c7b99c1f940b6ce2e09d6f9441b51496f0db0b2b5a02154939d71c50694f9455af09b9eacdb9cebc0bf2b191e2b0ce121755131e552c30d1a558aab2cc8738ab3479c6de0c2cec6c245988511468697a84af0ba5138b3f4327eea995948ae16bd428469d48a6713b2a87a22cef2e89dc20d724b1065a7c6f2905e53c4a76604a1652d45063b9fb0b5f28c86d27fa891c6c1b4a1e538aa0609a746054e90ce75be722e50b2599895e5f46236f6f21b95e5a041c1d21ed24bf75710e108655c6c796b334cb75d9f95403d97b8cd68e7f2ce29b2b561f74f829a5b995458d6b5680e2b04e19498d09eab66284e681d4fcc52e893c191db9339ae17e297149bb0e5e9526ae9ba8a1686986d42888c461a25145dbb65fd61c20bbdde241ba19211c1547d82043ced1fbca6e570568f07d60c47224a9427b88dbd819949065813a788c5107e4f93724dad7b1a6010ce9ddcbbe55471dedc3ff212e6fb6499c56c9808a36ad42158f76200673b26da0d0c1cfccdfa639dca0ef5e7ba49be0f06a8b4cbbcabd8abdf72e5a4d2b2ae8a3d09c0e84743e49d75ed9b512d3f484d7ffc8f515793e0ccc9cf4e153b85d9c4de5332bcd96bbf3e92443547b76b9de861c562cfa3e66c5ed54591e47c615cacc4c22460a9960bc2ab314077285e3c5c8946edd396f615b969f6422718072fbcf511a93f297492d82f3410526dd8d574518fba0c1acb2f3ab0324b7162e6b0829d0f579a4a4b0cc4f5f63c9380e12a666cfff37e1f5b0d69500e6303320e7e0354d49c9b78c3f1ebf5bc643fb6e65528e98645e0affe524b7096d6c1e85f6f90919a6c02a3ab50cd7cb49c0106a9807354ecca771c183ece9c42e1f0b182191ea4b9e5af43695de866b32872a0bb3da04257c391a72f504db1eec73570c52d8ac04555196620f42a2032409870bfe5f98f81f134da80cc52d292ffb4e004dcf59d66c90522bfc776660234d42688171ba8b35cea3713b66466df814d18d793846e3d672ddf0ef920a1b0356528be7088ce6b2791149af55adc6cf2828f479fdd28642e395f21d4e13e24765dc5187dd9c9d1d1dfdadf3e4283c72a4b4269fbe6853615ce578e0a41bb4e91f7bdf46f3b2159285afff2b2b75e04f56b6b76dcfe61a95bdd7e043c92a685729228bc5049ffd9ba83ae7cc6b1ef7b4f0a1955654e7308f1a119cb716dbb12448ac87884776fbd089984cbfd5bbe0e66b0b1bc67781c30b6e0d40d8abf79261dafbc55f1ecdf5f5b440078b20865458494e4f8b6ebb5c6424ad4b2d8207b29632610f47540088066b1d0f351f7e959794d80fb2d3810ec42559132020bab8cac0492192180fcc74a3bdce7135f0aceca5b09346149383460cb54abf61d4398e69bea4eb386ff4b0822f5901fa64a9168a56aa27ade83cadc339e6dfac3c3fbcebf3e86ac248e8f3a140fe279130a11061dcad016cedf02e0dfeabd582034ccf316ea7152c47a10789728281f0c34684bb241359a6da932d29f4363bdc4cc297d201033256b0632c46b849f6279b360fc384340eb7f3f473d694562510761f752d158eb700df036a9cb89ad6973ce94b5374bc95b15d895cc0369e1b45ca4ac182fc2ad0e9b05c4a09271303851a27f4b45d02c5470c2de7eae989c50f07de420c29129b805546f337eba785b66705491822525402c0843e850e907766f975655946f567ab36e69404428e4144d64ad33b5a0a7218a042573d7220e249aa61645dcc1ebe9ec5b0cbf32a93804b857b0fe8a98e20116ef9906ac2ef983762f45109b450b509aef8f5fea2b7fbcfb1cfdc62cc0eb275b810a65a1a5fde5b1946011a01192a75008f7bd65c24039869dabf6d71b3a15248a7ce679428c102ed63015a1aba4953c0125b03962d410df294a7546e64a6d2adc333e90110feb324c01741cc4f4d0607763bc2f9ed69848baf835be180d012a04bc8e270e4395a1f2eca9415ddfd7637b3d98e30e0993c0f43da3fa7aabb838161ddbd0e961f08fabe2e2fdc5fc9aba3530a458697995fba66574055d940fbd2b344474770039b7798d9d75cc15028cbd2aa3a8e2a2a10c92b6dc2567d5745f8bca8bb17e2f6ed8eaa2b8ada7731e8a727bcc6b2f7bd474882beacab1c9c5f9bc33e8b2480e680353edc16c5af42b40980112b0973401df664a838a4297f1ae81492f17b54783a154dbbc09df6b4ceedea6dd1dbea2234b39bea6350e86bad70c7a89da9f9e368d277b6f77f1178a9ed3f99e371de75123cd4391f70901bdc7ccdc6c58b62ca513217d5455e40de918b592cabed977b526851d670e6e1fdc0b836b6615678afe4ca0f2df09361141690d8853894aa615b8130895626a528b427cb0038cb76c198402f15ffb89167fd261a6b0655e4ea10bf262e5f208e8bad14a15f7a941a36a3567892a3946a6ea1f4893ad3aa66c3d75fe5d35ed55985ccb09f861cae11d2c77ee96e21a8426cf98e6a5409a0e4d1f8ed8d1a8429213cce47d6123db38e28ba7cd43ddaf9013f3de61c7b323cbbf1305d1bc47d515788dbe46d1935b1f741afa37511391fd4fed7818de79de991601e86044ee93db4a3df830ffc11e2a98ed685f935a3e15190c3992165954b380831681f451da84fb1a2d31cbe92835d6d87109148f389ab46093fd6f62719175e684f5702f3e04e51ef609187f0a3a45631384c73dfe7fcb130e0ea5321923577239ff622f64c9a0f4ddd7bada5c3ae859a5a97323026031366c5ffd48c22ecc139b1e9e6f848a1940e063fc1460cb2eaf23487d00dce7818709e9f50f1546c81f0c046d7f0aca993bc4e300980921cbfd13cc74fdab9ea355029ce264096fb0a9efe0a9500b1f9d3ba0b7551cf9098d1a69e4189a35a2acf2aa6706b4bbd13a64dd828837410cf87f4ce41c5a3de33d8a6c484cda210c5b926938e10a558909fc4a201d1505bb35f4a947ee65db2c4fa5bac91891cb232c2e5ee27382feda0395c30fd7457736017d5d7ef3c88bf2cd1c3dc62fc0f841370fe42c3a0826104193d11d33b8f445ae86c87d1298d84799f22f9f5f78ac0c2266317172f8f41a7d23e733ee42eb4235ddb6c0f7a98374cb3abd0f0522d70859a94a49ba4e73cbb28c412bbc9f84e9cdbe68d1ea9b4a6f7dcac062141d2fe2f76404f4a1f43c7ab2c0585f38c0f06e1dc7b8863613ce884cb1b3500cc61d34c5466c5752e822524f87e48d002a5a072d81fb50f7330169b4d12d918ba905af0ed4b8543a3db8abec2b4711290dcfe20c5e6548de6438f1b908dc8c72cabf7c626b92b203d3d159038a7e9c810926738b4e664ffa3bc54c2043d54414588e18a3b52b40de6a674fbf240843c04f8c322fe6891e0f13af642e0adfbbb54d0a4488aac530c9ebd82cd6413d8498c1cf0598a4e506194c9db205c492b897a80a55bee695b5d249c72b3e1fdad3c2a13f8139d155b4c13eb0bf93f58475956bf2ad76c69838887cfc2ca3ed4d156d6e86812d59dfff0ed22f372d00fffe993d56a402aec3d04d5bc24f2927b91ef53d6d071afefab8113097c5c63ebb5ae1b756a0877a84201e5e26c45c9f81eb4044c43215f48646fff5c10e432a685b5b29e704c398738c36fd154a3e0464a37f134ed4919be568e8e63fbfdff44499c6afa4ea01068ededa236ad5ff21eb3a5b6326391dc28161563e841543fc387d88de0f8fe5f22fe8e340de1dd8146132e860bcf1651898593d7d66a09e2815bc9f83135878c7625ba7dca2ceb3864f532c426f75e318a5fd881d70331842b4e2fc2b17260ae5ca5febd1897246411d72d47426a84971d49931ac114482a1a389876cc12e48b4911ae59de9864b1a6ce928c5ec2a5bb26b600cac789c8a64d55157101b345b5cf24e2fb24b914e017a99789536f024015b100ecc69ff8eea86fb900791cf6e5712e7a40fcdafcdac472a289d1811453e4bb0bcb6570866c96dbefd0a62fd1e5379d9595e367ad616bc029aed6f5afe9fa38f9e6d49048ee0811acac5c8b9f72a93b00eb74276957e64d55148d6f33d23d326357efdf4a3d9c22fea54ed0d6ff06ac49f8a0a3b28fc391b562ddd40fd8c2424a17747f00c92a3a5e2fae43ed1b46eaef17da9143ddb92d1ead7b2e76512cd0fd04aa6220657144acde74c92918654c9b13ed62516829035cf383583e6580653aa27ddac4ceb74fc87adba2bd11c2009fa71ecd83f73c67b57eb5c30a484497b0bd40fc9d7842a4933007b663cf18e16f7c211326cb78e627e9c66633a84fb408bf865b0e4d15cc49ff63eb7cb7eebbfde1d13c584a2dd397f1760d4e64f31ae16838eae772f021d8ac5e1ee1ad69d44ea60b382de353b3ebde7cabca6f4dadb268eafff75b5bd61852f2cd05c6de04d39a3885f7a25e3aa8ce3e6b93d4f44d64c549ca150bfaae4372acc986274f4b953db4684135683887aee7c7ba2488d576ba1b6718bc7507fe357e0b0955dfd7c06</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+              
 
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本次实验学习所面对得场景是，对于目标站点进行渗透测试时，发现文件上传处仅仅只能上传PDF文本类型，于是就查阅发现有相关手法，便进行操作复刻。</p>
-<h2 id="0x01，创建文件"><a href="#0x01，创建文件" class="headerlink" title="0x01，创建文件"></a>0x01，创建文件</h2><p>使用迅捷PDF打开或者创建一个新的文件</p>
-<img src="/2022/12/12/%E9%80%9A%E8%BF%87%E6%81%B6%E6%84%8FPDF%E6%89%A7%E8%A1%8CXSS%E6%BC%8F%E6%B4%9E/1.png" srcset="/img/loading.gif" lazyload class="">
-
-<p>选择属性，会在页面右侧打开属性窗口</p>
-<img src="/2022/12/12/%E9%80%9A%E8%BF%87%E6%81%B6%E6%84%8FPDF%E6%89%A7%E8%A1%8CXSS%E6%BC%8F%E6%B4%9E/2.png" srcset="/img/loading.gif" lazyload class="">
-
-<p>然后再在页面属性窗口，选择下方得动作打开页面处，单击三个点（…）处</p>
-<img src="/2022/12/12/%E9%80%9A%E8%BF%87%E6%81%B6%E6%84%8FPDF%E6%89%A7%E8%A1%8CXSS%E6%BC%8F%E6%B4%9E/3.png" srcset="/img/loading.gif" lazyload class="">
-
-<p>点击新增，运行JavaScript</p>
-<img src="/2022/12/12/%E9%80%9A%E8%BF%87%E6%81%B6%E6%84%8FPDF%E6%89%A7%E8%A1%8CXSS%E6%BC%8F%E6%B4%9E/4.png" srcset="/img/loading.gif" lazyload class="">
-
-<p>在其中输入JS代码，如弹窗<code>app.alert(&#39;XSS&#39;);</code>,单击【确定】按钮保存 PDF 文件。之后再另存为文件。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">app.alert(&#x27;XSS&#x27;);<br></code></pre></td></tr></table></figure>
-
-<p>这里需要注意的是：Adobe 支持自身的 JavaScript 对象模型，例如 alert (‘xss’) 必须被 APP 对象调用，因此变成了 app.alert (‘xss’)。这意味着，利用 JavaScript 进行攻击时只能使用 Adobe 所支持的功能。</p>
-<p>最后打开刚刚创建得PDF文件，即可发现弹窗</p>
-<h2 id="0x02，效果"><a href="#0x02，效果" class="headerlink" title="0x02，效果"></a>0x02，效果</h2><img src="/2022/12/12/%E9%80%9A%E8%BF%87%E6%81%B6%E6%84%8FPDF%E6%89%A7%E8%A1%8CXSS%E6%BC%8F%E6%B4%9E/5.png" srcset="/img/loading.gif" lazyload class="">
-
-<p>现在，尝试把 PDF 文件嵌入到网页中并试运行。创建一个 HTML 文档，代码如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">&lt;html&gt;<br>&lt;body&gt;<br>&lt;object<br>data=&quot;demo.pdf&quot; width=&quot;100%&quot; heigh=&quot;100%&quot;<br>type=&quot;application/pdf&quot;&gt;&lt;/object&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></td></tr></table></figure>
-
-
-
-<p>查看效果</p>
-<img src="/2022/12/12/%E9%80%9A%E8%BF%87%E6%81%B6%E6%84%8FPDF%E6%89%A7%E8%A1%8CXSS%E6%BC%8F%E6%B4%9E/7.png" srcset="/img/loading.gif" lazyload class="">
-
-<h2 id="修复方式"><a href="#修复方式" class="headerlink" title="修复方式"></a>修复方式</h2><p> 而作为网站管理员或开发者，可以选择强迫浏览器下载 PDF 文件，而不是提供在线浏览等</p>
-
-                
-              </div>
+              
             
             <hr/>
             <div>
@@ -538,6 +511,23 @@
   
 
 
+
+
+  
+  <script defer>
+    if (document.getElementById('hbePass')) {
+      Fluid.utils.waitElementLoaded('hbe-prefix', function() {
+        var hbePrefix = document.querySelector('hbe-prefix');
+        hbePrefix.parentElement.classList.add('markdown-body');
+        Fluid.utils.retry(function() {
+          if (Fluid.boot && Fluid.boot.refresh) {
+            Fluid.boot.refresh();
+            return true;
+          }
+        }, 100, 10);
+      })
+    }
+  </script>
 
 
   

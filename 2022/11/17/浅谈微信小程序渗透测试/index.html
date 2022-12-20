@@ -16,32 +16,18 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="声明1注：本文所介绍所有工具仅限于安全研究和教学，用户承担因使用此工具而导致的所有法律和相关责任！ 作者不承担任何法律和相关责任！  前言本次记录一下最近在搞的微信小程序渗透测试，权当记录学习，之前一直都是通过使用真机进行操作，但是仅限于对流量进行分析，并且通过微信的开发者模式进行调试，本次通过使用模拟器进行操作，并且通过反编译抓取小程序代码，进行代码审计 1、环境准备本次使用夜神模拟器进行操作，">
+    <meta name="description" content="有东西被加密了, 请输入密码查看.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈微信小程序渗透测试">
 <meta property="og:url" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/index.html">
 <meta property="og:site_name" content="nf592">
-<meta property="og:description" content="声明1注：本文所介绍所有工具仅限于安全研究和教学，用户承担因使用此工具而导致的所有法律和相关责任！ 作者不承担任何法律和相关责任！  前言本次记录一下最近在搞的微信小程序渗透测试，权当记录学习，之前一直都是通过使用真机进行操作，但是仅限于对流量进行分析，并且通过微信的开发者模式进行调试，本次通过使用模拟器进行操作，并且通过反编译抓取小程序代码，进行代码审计 1、环境准备本次使用夜神模拟器进行操作，">
+<meta property="og:description" content="有东西被加密了, 请输入密码查看.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/1.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/2.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/3.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/4.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/5.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/6.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/7.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/8.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/9.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/10.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/11.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/13.png">
-<meta property="og:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/12.png">
 <meta property="article:published_time" content="2022-11-17T12:14:41.000Z">
-<meta property="article:modified_time" content="2022-12-02T01:16:51.966Z">
+<meta property="article:modified_time" content="2022-12-20T01:25:49.467Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="渗透测试">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/1.png">
   
   
   
@@ -233,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          14k 字
         
       </span>
     
@@ -244,7 +230,7 @@
         
         
         
-          12 分钟
+          118 分钟
         
       </span>
     
@@ -285,71 +271,22 @@
             <h1 style="display: none">浅谈微信小程序渗透测试</h1>
             
             
-              <div class="markdown-body">
-                
-                <h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">注：本文所介绍所有工具仅限于安全研究和教学，用户承担因使用此工具而导致的所有法律和相关责任！ 作者不承担任何法律和相关责任！<br></code></pre></td></tr></table></figure>
+              
+              <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="8b8515d0c38d97e7e80757044c2e24a9d07a605502ee94754ad128500e3fed1d">18cbfeb9d2ccb2d0f0d0159ccbc79c37a55c068a517e5d3eab5a405d1b5df29392f76943596572b1b298c065608a0a9f9245ada96ca56406cfa20a127c9cdfc61238a7f9888324497c4c2034bb775dca8acf93b3667004a33bb40a9d4d1248119734f2a57eb713e04ba3b63aeec959cc2289bc2ac48205f4bab03b4e0fc5fb631b76f82f11685f26cd4ac6662113eb7399f413deef4b88093d4fc24a7339d8bb12c03acf6fe94e7a969a2d16fca6a945a92b35a389f9ad559a53782d16859da84848d87555a27d1b161c130c0465c318c5c27395b7340219e2d0059fc6b3149364698d80806356f5fab59765f65f832c976b5994986c3bc2d3149a21c00f9d6a44cd70c0578bc34cbe5db70b0e12b085c023b6633e41fe16a9248d8ef0e7582bf3f622cda1b5888562e536322ab0ab90fb9f820b4ad9ace7e27ce3c39d2ba07ccbee24ff7d5916a6257a11b869089cb858b03609376e271c582caf10d7d4826bded4c28fa624e5ad43212207bc447ce2de87dd2bbf24c6b07d91b62bf4bc779f5533ffacecb16fd6885181f846b4b3b03a02906e9df9b62c2b7703cf3ab02aeccd5f3f091beab19eef470b6a5e7536d6f295d19dc08e80c6fcdffa91fa1519f268a1a9d5e59b9f6ed7297e2ce2d0438d1aababf55ec6d2ad019df80c0905c9045e2c4c5d5eeee5a558838a796ca6bb58507acd83158f7dee260a7378ba0904eef9de82bed544034e74a656b19254375378694c7b99c1f940b6ce2e09d6f9441b51496f0db0b2b5a02154939d71c50694f9455af09b9eacdb9cebc0bf2b191e2bed3e351033b22b9f52020ecd5ee6891b4a5b7502f16c01c328ddb214443ea3ead5609ab8f7d180e73cf6d7e32c7a8f45317da0b45d9cf582f19abba984191540cfcd1a1bf7dde03cde676e3f777c549b428f2f1724557fdfeb87ff263cfdb2b12f9b5c6c51058ad54152e4b0f78aec1670f46018a3a31f9125c6258b5ed01bb4d15430a73d5ccb5d4585895abfd4104d8a1daa43294f91a2224c518b73fa74863e5d0fa9d1b2c9317ee2d0a7b289d5ff1b9fe4df8eac7ad93c8bc1171e8567f5447ef225def46801f1e6aac8c35a80a703e0ef51dcb4850c17ebfc87d013305892314134721517fef273e5add3eff9920896034d3d7ef36561913d09c0441779a16c27850eded626d9ee64b2258675366edbb87a84a1d313ee2966b2a231f3a6cedec17c3b058e133efe506215712632f71d5b301c7337ec60f43fbcb2ee7692f99855b383a7db5a97e564e479194d5766c92f59850a438b5e5ebe0085e9a0dbcba725641cf88f0203f5a5645fd15f9df010b9c34afa20223a5727c37430f8d4492690ee8cbfbe3dda021019d57206a1006f19519d9c10bc0cd9817f365e1d5489bcd8115118ca8d51b0edb89934a22c95b3a293ae386a7800833fa819c1e483f2c79cd58be068a2a781628612f9a49607090c4cbde4d7b6ada4a375691c587587ab3d77d2120d7e7639789750276a62624a664edf373d6856a341dd79f790cdf0b6bab40d64835b7550922543ccec775bd0dcfc41c033dfea27cbc93338d4da263d41b0f016ba20b0cda80b8982562621cdb4a03e58119b47b4845d7f667e383ed0ccdf50310efc4b58a37ce4b40ab51e6cb29075471ae27a81c4025d9293abfe1a74fb790e80fad608983c605bdb600f3a5fe603fd25d975895f239ce8f72cea1779ecf6c7c5f1fcc8a75c3b0b1134c546e6247c72f2df44bd18790ddb5acde1b3944e0d3c2bfcac1067c7a76a8f46a4fbc809a021a0982382a480d9db5ee08ed718ae9364d2f73830cc30526d4fb09f89e8a36106b25e36a90b4fbe2a67f40ad49b97673316edf6fbb0ee29582e5c6163c01e6279d8e6b7196ddb50050f67192a32cb8e44c5211bde2d62a226f2f442032422f046190542f3e95c8b07b4b1ccd7c1bb7c29b3d31f7490b008c3fa6b687c9a5fdaed4c95c386410d9d47c47f9ba97c776166bd01148b10d97c696085cfb77cfa6062ba5e645ae2d14c74be82e01bc793f5c2b6d020fd4f13e5ea8b43a7a72611a34a0adf69ad4ae2d17372527470fa8363bef1a07e9d59108478578ce031079d5481743d3d21d7f6d27add8019e59feeff0a5f2c977e54413f76bf2f71e10e757a4371dd430e8f111f4335ca39d5d385166f9dd52da1ed2c910089a492711df4396c00d8e9870a61cb884aac1f97f0ea89dcde401d2575c1b62968b109b4061bf2bcf21fcac7150dffc44f8a1d019acd1ff74e45ee6e5de26ec5e236c146830ab897477456a3704fe315934dd6e125b821abaf660c472e6014d140d4df368f8ebabe07fb68c9f006a1ebd86d737cb374b1412d613370f061bbb673380155103536ac09a01055323f1617f5571a27370bb41cf7c9d1217ef6569d2ec00b9e1fc043d1448dd63f967a7f840176aeaba115c6bf6bea5a9438e0cc65b60638adffe65b1108d489143eb641f14c20a8161f54873b44a2d808491c9a80434c873b432f40b82e600345a04707a9b60593c950ba06905a6981763edbe2e06e710b6c78da9ce74a51ca434b16579cfc260c39668fb5f899ed44cfdb371ad5c2901af11df6d31370c936e2f52b8657a238a3fb3da31bdd2a752f26a7ae7faf31907fb473d4a11fef2f8f221dcc6eaccc0c7e21faf485c3f79967c55c288345c495e5816f7cdaaa50392d98af9e82f0cc6f702321cd8d875608d93c9503d8eddf424fe11bc24abdfd6d889502b73153c7365f3d49d87c879d4fad51e8d859a7fb63420e95b85800e8454af3a92870a68963fdc1648f4eeff2ea400fe5bc1202944df4906025793c5e6080aa08265cd43d6cae896568f36f749a388fc7e49751db0c4b3d1b42dbc59c0b6711ca4745830c9008d94920b16f4209d8590cc706a5170c7eb772af48c71bf95ab79c3d66a746c7b22d2211665175453aa3f1cdc3eac1f8e1a8d2f3043594494419670ab57d23a013e92de02ae4d1976b72868938198cb33e77a67e30fc2fa320768967ffc2f5bedcb17daeaece759cb4c49e10cad22d2ff4d9801b209bf1d9790f288dfbaef2ca85d7f3d2165fa28ccfcb292990ee38dcf5597e49eeebdca52145e672471febd200c5af897d616cc8ecfa2b84751eaf8d016f2d8e41fabef051a2dd82ef4685747303c7c5bdd0d3abea22f2e7600be8d122356cbdb64701bac6fa1dd5d8887d22d47177c52c5522ec6a0e87a56d42b4e3a2aca49db011cf85b56d7d9af1ef223079de0bf21a2a029a0400d06797e474e2f789d8f83f36346ce6f938b987ebc1381e4ab48cddf8fa58b404db0db97a5645d7662d5509f1fb1fa16c9f04919ff8d44a95d734c5682537ad46ba1ad33fcd40680872e481591e1f859744dc7832858bd5141250d4553789f7e9180fd49f237ede98c88f825310b23cfb31c738de97d266b1c7175237d2c72b3147fb3901bc543016b9258e57c6dc35b90a77c9814b7300ad3663d921e901aeb1d1cf98de5e859f3ddd75366f579f5417ad5752d5fe5c95c3e17acffd0da566ff137d48804e93c5a199bf82f85b8266498998c40320c332b6ce32baa8cb20df02eeb148fbbb31c5a5ab94632380533555600a229c4523f22e7518e5019130db855629ebc976e18a58d2ff8eb8cb62752be67a2ea6f0c64ccc1fab651209da5f880eaa0c63d34146997c8b8361824e4f8e93c79c8cd441ab0203ddda992046a202fc532724b1c47ef0fac100bb33e0ae761ac5e6aaee2f751ad6edbfe81c475698f9681d6331cb6d88a44a0022553a700ae2c02db3555a72426bf0c118763f721800898f08da55056fb8b9f8cdb38ad87c7b91ba03f14d3ebc468b221fe4a61c7f4e0fe930228245d5e4dace3b2e1ed9212bd58c7ab18198bc08785d336c3b7a6487f0f2be134fba2a2c86a957f12f335326dba0d0be632823026922486b568c824de38297ac4415b86ed4e4c4b4da13b174fa9029e40c2b0bb656f25ac7e0c05ec0a4e2747f430cd6eecbefe634bd160d2e2035368e1afa079aabd6556f48357195b57d8af420c473488deff2078655d55563f2fa2b96e2af98a62a3d0b5e805fed59d74a37cf0a0afce45a379485e30b23490bf2512220dd42107be777e6aeb9439c7e99a3b586d0e5f27628fd5c5cb071a1978cb8db9d9375e8293568c0d975051356d8ec15eb27fa33bc5f5b9011b0d3c596f943d98fcf7801c98828d40350b9dd6ee0e2f5012f1541d318a27bed5ca5da5cc6a9816617e77aa9d0c20e1ecc6ea6dd352f67d4982faab0efe23e40dd9ec182903ef5b5081c0f6ad54352e1a8c59f85dded455d62b9f5066c0ca212730cd8a95cf583a533c246d6b03ee51babba467a9b2a9b6106d0cca39d7c647329b6bd26fd07a0fff4d681831e99fdf58c5e1cc801d31b060868a90a5bc7e321f2b4c6d7c885b02ed7186fd61eae5aae1fb2df0d044d5bd55ef4e4951dcfc8af3b49ca7301dca54030a8936063fe97d941696ce8a7653f78f3bf6135c8d6689899bd0ab49a88a796303af941f14fdbd7e16bb4899fa56b33657255ffd4395e365ed3921d13ad76bee4294a5d6c808d1e3b64e7a0b48a10826c9290b7ac0d0faf1fbdf635b8f53b039d7a2804827571d2b5674c785aeea35d97138ae1b984ec873a1ed01cc5b0bc7a9bfb86cd6253b4278c95872925125057765c0ecb68d0d4437aad113fd255d92e828b344f913b52e780c8179cbef25aa3a43de4f8d31f30fd9b72e7a3c822f97d34febbd3a328b415cc83cdb090eb2bdb610ac769b60611fcbbff17c8bac62687f4257e9d9d0afa4e121d1b70869540c50fd6d75047cae2a9cf82cdc2da11137ef839fe2652d101e65f4eae19a9fc301d20960261bc687c4ff20aabc126f155abc2d295f62cdc7c0e66bd5b02bbc8304704a9b2cb41e584ff2ebbf792862d151a66f44333a06acf275b7ff214da730181c6cd7ce7a98714effa6937494417f66070b363b9ec564da57a052b57b0a985e3c5fcd4e67ca4b2015c78440ac9d6e6715bd7d274123249c06a240d5b2bf70759302fcec771052d8b98d8adc6ebfb17917ff46a1dbdaffe220be7d8a528507da3ae500509b17fca5a691edefe1a4169cd6fb39f97580e4c4a8a8156c4726bbb729f11c62f139d63e1fe3814186bea91d1ba811b714f008f1f8e4c05fd15a99664e4f46e34847356f58365a78ff1ff4c490d302ae848500d5ddda8abd60c6b2df0e3ba88c8ac163f9b30efaa31ea671690cd940cb2d0107c8be83dce0ec290a0320eacb91dbc9b3f6fc3dc14fbbd24f867724c2c71a8571a6c593ef266923da1a7f4cb0cb4df2a5c4d112527f17a39626b27340f208484603bba194f7e29089df301468c9a8e63d54bf843245a41fe71aca964f93df35a740765539e25c3cc6b60689fafcd76b814f6be34f9265867fa74fdafd8d8b022611b1b3e1b62199b1a2025438e3f60618828ca5b88efc22e45ab7c33f829cb0898ba4b954aa2b6979f916e8801865b4be827ff8ba4a54e5763a907f4902d669507dbddeebff5385aad83a5b1c7adb9c7ed6eb9e1f62e582051d5105c3c4168482d738fdd413cabc9bf9bef7b955d7ac2dd639de0b49dbd135d14c3db2d6878f1b36a30d967e93bd4769c902a30430d9cdc49d8398f7b2bb0f1415fa3908e119ba90dfd497444d40797717e83deae5aba2f3b43c56d5228ed24ce7dbc6bd485de8591680d145badc5d2da4422df6ae6135239a5f07c764bee706fba2d49616a700d429f66c5b6fccaaeed33da974cb7787acba09f6b00ccf0e4ec1ab1f5d8115f11486d9609ba01ca7e4270decd8239983812fbb4ceacb438a74dd7cb397aae97b637144618117dcaf824e9eb5ef8529d01075f2fc18638c14f153e7d63cbbec88e4b907ae2868dcd4486173ecc92c25b339e8badae4aff1669c4947330a23b4c260e2754f3fdbb5a6e64455776fa03600136ab38d418012a4f9cec3bc713b855d095affb948650b2a72a3be3bb5e049855a727119c7b0907e8808e4d40904577e02e4e0abf3c2f1128794bb4d6e16e25a62eab05a34836d61ef3b092803604c11259ef90cc16f2779a132683b74e57d01bf2e58d751d9d2e0b00a2e8aa88636fcc3b720c91b9cb6174587851ce8f79f1ab1c033455cb0983372dbd23afb58787c5aa20742d0c0fadd0d4f4903ffbe8825fee5d0d16b94f7cb1ab2100e4d7042119a9b52196519f791433f886cfb00f5ecea6843a35ec167f9fc82c3538ab92cc528cbab5fbadd510b4423452f1901dff7041f135f7c4cfc21e55553fd5e40ebe1bd98ee4d743eb1b4a8222975b9ddf2b90eca67ae2cb39b8309ee749303c529dd3f8ab4f16c254c7cd291d3329c3538ec73b60ecfd8f642381a44fba5c7a17d31025777844b3106c60e87ca166541391ec4a240acdcb60606fda42526206127892222f85cd6acff4161e45c753df976992633eb7e1acc10f41eb0502674dc58a7b98a2c2becc2599da4f5ba940da024943d5080a9dd538f8f2d5d05484252d668fe73424b20a8b48e9e3a2fbf23b22a25c841d1bd016771507e9d1a7a874822d56fef78a5154fbf7ebf5be8caf3dc29914fc40764ad0c4472f4afaa913d7677700330ad0eda217c8fe4f0aa490f263429cb229be5eb067f5a296dbda6d62f971eef022135f6e8155b919de8e7b0412e9014e1a75b767cb5163864a91ecbd37229e21e94bb64e8ffa0c5120361df3b3be581ed3b5f7d99b8512071ab3c058dd869ca042dda096025d3c86a2671ca7d3b1ae364477bdeeedcb97ac626ac605d0bfe52f770a8ad07ddc3d81346cb65a58fabc35dac1ce21b564ca1c9ff5b834320134cefa3f9a7e3fd4a765104e9ab5862c0e795938e00f2e6ecde0377e1460f1406da4824cfbe4e62b75eda8d526847be99e2a611d58727e970b86ddbf15ee37cfd03649afc11c7a421a003df4824acfdbabd94db306d1c4c06a10a94cb462fd4519a0716b3c95cb7abec67dac0644c1d63a9748a4d2818ae30686ad7101f05a38685786c72b0a1401736ac8508c655612a9a4afce9ef97b7f5ad94ba14c4949b790c76a0131dfe0ead1f7f1093257d25e86469c417714e2a43095fc57df519ed0da6d61f9fdfc940d588610acb77a6126ffd3e95f1fc7d5b11ca5b951ed7189221226a161b67bc7161cbab72618df540692d5b9a437d96cd1dc469ae5232ecfc215b12a964a10b02732dece14dfee70baa7a49a4a7f1a007aa342010f68e6010a2b27d0a6dfc01c756560591536b718602b930da888cf5bc148fb974a4421052f668bb7a5550e98b834cbb4194c8a764b67154786ee105d0f30e9ee358f7e32e3de17f19b9c9f89c439966944f3e62725fda64e7ebadc20460e43219cc8f91c93552308132cc1ceafc75ce8bcfb8661cc7d02cc3e2724a1f721398c331350116be395c2bfdd8f4e4bf50fa463ae3b3c360d756ce8293e2fa970d0b3b67fa7d4014659c4eb2602709c2a3e8f2c9e1daf1c91fac6079fc59190acbc7be0c15a0f597442226b47aee3a8e9af337dcb8aed9a3dee6a5740ce80970b65d8ab355d3d8d49bb9c4819096826918a08f70334f094a36d9fac18c1a1217a5b6f108f0f6301c7dc81f05201a44519197e7c4ea789e1970044cd9c40d6d985c15eb39590d98cf28c72565ee114578921b1f03b7ddee48c7873b23e587e996a3c878d21c9475d951356493f6630aabd58e17335a97c505dd00d8ae69dae674f3b0d3fb201345d9d37ed6a25bd14ba771c1cbf7aba5e658222eea12d118f12e1785b2999ffa0e7518ec7904bdff972c646d6f1d008762b1f4b1f95f761d6cd77948e9d97c0f431d5596bc127dc8699793b5df96338dda8e09df7218e1c1dd68f0eae87b8fd21412d8d46371240832b3347a7f73726c5e6bf867e5603468217615c3561b3226cad78e747c6f12a1a82a0f7918b106f7f3d980c5c56e08090fa30d3b3b97dad012728773455b0f65faee96181689d81f973fc3011341350eb58cb6f1877f94d70bdd73d61d2488b8d5d9b7cfdd4826d9bceb844a665243a74f05cdfb68bf9fdcc18c1ed3b1d6e23fea423548ef25d2eac36b970cf69ac4e95365319ba083a9ac85c2cd7b0218c96a00262de8ebf10a3057692d6015400e66e5177e0b168b23c2bf2ba755aaf397de4bc640b4cb84e7b83dae2ce1a394843fbf51d3c2b065330a9817593c78b617d522debf19ff275a675419f32b1ed5182412bc1cbbc8c70aafe58826784263c330cd220a61584d7abe36527bf9da1fd4d9feec019ea3f5cd35831d0169d3ae5daf132c4ddf19f1eb325756eab14fb27fbc939f4516d3414704668bd0b42f3942a592c30ac381cc9e6da63ea8df0ed24038d65078a30a584dd930a6b3b6ebdc7333ba49a74fddea9bb5d2330c9eb2fa220ee2406765640fa265b45c7f909b2c5f5cf9807828d3465e7340e62cd727f660e5babb79dfccd5d4e6c59c741360ea4915d0bb659d5087ee022cbcb8b57564e70a4f3fe533f05fe42e91ea25f10f76834e37d1d5b438c963313ecf1b621e8fe7116ce48dc27ede340adf85a1510acd9c8d461984fb7bca6761595586273ddc9028e74e01b4f5c5ee64e19e29f52a7308a53ab11f44db3f2739bc91b41db43446c4f375cdd024dd66ea96ccd9221e94209975775a1539e008b16a3ddbe73e4f95560f64ccd877da03ba23c638b574219667653514882b1aeecfa15c391516769da79aa8b1303d4e213e6e0e8c5845a905572b9309050faad72fdd2fe35eb5242ece5a5e3dc5555cc10a8d2ae02a6d7daa16a6f9c792d81c3fdae203229a6e36c80b13286479eeca8da0d185cee37d479aa763adc4151faa1d20ad07afb4552588b8b1556e55000251a1096fbc113297a0e3d3fe62ddc07dbc0248d256240814f8a09f35c358f14cbb97aaa99c58d7e652cc1e77b3688675d903d4351584ecad1e699c23be5fdf8b9e8b37509612b34e5d61f7bf6b31eae239a67d41298dbb3351a258b282ab11fa0b305f74832e4ddbbd9ffc983637ed7268c9b1eac867c85321b7b46fc745efe3d6ba645d30f9e7a46cbe0f727d134c8aed37cf2ff3b2e3554352a2e68986eb17950884bfdae68886f8b32880a2ac96d64a696d96cf865627773831c67d8691c623e21c918d10bdaa74a886f8f5ff7212e8466fd368e342204da04573f503f075ddefd952a54c9d172793d24482d05b81aea545eabb38b436aa6a6cf835fd17268b4519966b7837df160ff8d5fef9c57782828943a4766b71294f0bbb030d43e093a008376f05d34cb4b8423858254c1f1684cd1d299489044e820efd6f0304bdd9ec513d6bac1d2927288519e8433a78772696aa20551542c0bc9c0e219c2a70c4e11e2060457661ab6348f577d0c167645f1c580bb9c76760ce38dc67c5267dde4a406829eb8abf9e3bac6ed1c98c8578654ea61da993a8217f9f2eb59d42f3a2c0abb85e297d47a760abb8c077003612fc83b733fda0d91df627b5f6b5aea944c088ce65691685ef52461e9110e20542fff9e1d5b8c76b9211e74acb576024a1216c4c64979880cdc213c9eba9413ef9dd244bdc36ae08f7aef30deba5fdde37d0e55210c9b281296abb78d331478fec310bf1adc3b48b61e6d2c076ceebc760729f040a4eb7d624056444d82e171fac67debd15dfef621ecf4c3b99cf2722e77832d8031ac21b875bb74e9a91d854932849fd981bd942019219289dbfef58aa8068d373e973474c5fbc8ed466f28667dbca4831333319b7e3ce54c702cca0b43a2ed4f1f486b8ed4bf2e342aa19fb44b18a10f02491787e16fe1d8f784897117c79e4ce5f621bad308d95a9bba1dd33772357ba9314353b40e0dff5f894e91347b52d10d384c1f033255c0f6b6b94ab0802bc6d5fa9057ab22325318a713d2a7a91debaf321c869c0c4253c9df5cfe8bf9973a44539e2caedb3eeb8a0f02ad65aeccd3012e824e557e28f5</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+              
 
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本次记录一下最近在搞的微信小程序渗透测试，权当记录学习，之前一直都是通过使用真机进行操作，但是仅限于对流量进行分析，并且通过微信的开发者模式进行调试，本次通过使用模拟器进行操作，并且通过反编译抓取小程序代码，进行代码审计</p>
-<h2 id="1、环境准备"><a href="#1、环境准备" class="headerlink" title="1、环境准备"></a>1、环境准备</h2><p>本次使用夜神模拟器进行操作，但是需要注意将模拟器开启root，防止访问部分目录文件无权限访问</p>
-<p>登录微信，选择一个微信小程序进行打开</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/1.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/2.png" srcset="/img/loading.gif" lazyload class="">
-
-
-
-<p>打开一个小程序之后，一定要等待加载完，即将小程序代码文件从服务端下载到本地</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/3.png" srcset="/img/loading.gif" lazyload class="">
-
-<h2 id="2、获取-wxapkg文件"><a href="#2、获取-wxapkg文件" class="headerlink" title="2、获取.wxapkg文件"></a>2、获取.wxapkg文件</h2><p>打开文件管理器，在<code>data/data/com.tencent.mm/MicroMsg</code>这个目录下将会生成一个<code>md5</code>加密之后的字符串文件夹，也就是当前小程序的所有文件，如果看到有多个<code>md5</code>加密的文件夹，不确定是哪一个可以先进行删除，然后再重新进入小程序</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/4.png" srcset="/img/loading.gif" lazyload class="">
-
-
-
-<p>在该文件夹下的<code>appbrand/pkg</code>目录下找到<code>.wxapkg</code>后缀结尾的文件，其中比较小的文件就是小程序本身的代码文件，其余的是一些公共三方模板库文件，可以不用管，然后勾选当前文件</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/5.png" srcset="/img/loading.gif" lazyload class="">
-
-
-
-<p>然后到根目录下的<code>mnt/shared/App</code>目录，打开右上角三个<code>.</code>的功能菜单选择粘贴选择项，将文件复制到该文件夹</p>
-<p>为什么需要复制到这个文件夹目录下，是因为这个文件夹是模拟器和电脑的共享文件夹</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/6.png" srcset="/img/loading.gif" lazyload class="">
-
-
-
-<p>点击右侧图标，打开本地目录文件夹</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/7.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/8.png" srcset="/img/loading.gif" lazyload class="">
-
-<h2 id="3、反编译"><a href="#3、反编译" class="headerlink" title="3、反编译"></a>3、反编译</h2><p>这里再将<code>.wxapkg</code>文件拖入到反编译工具中，这里用大帅师傅写的工具，不得不说，大帅师傅YYDS，<a target="_blank" rel="noopener" href="https://github.com/ezshine/wxapkg-convertor/releases">github连接</a>，这里需要注意一点，该工具需要<code>nodejs</code>环境，如果本机没有安装，需要安装才能导出反编译之后的文件，否则工具会显示反编译成功但是并无反编译之后的代码文件</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/9.png" srcset="/img/loading.gif" lazyload class="">
-
-
-
-<p>接下来就可以查看<code>js</code>文件代码了，并且可以进行代码审计查看接口信息</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/10.png" srcset="/img/loading.gif" lazyload class="">
-
-<h2 id="4、工具调试"><a href="#4、工具调试" class="headerlink" title="4、工具调试"></a>4、工具调试</h2><p>这里使用微信开发者工具调试，<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html">下载地址</a>，选择一个版本即可</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/11.png" srcset="/img/loading.gif" lazyload class="">
-
-<h3 id="4-1调试过程"><a href="#4-1调试过程" class="headerlink" title="4.1调试过程"></a>4.1调试过程</h3><p>下载安装后打开，导入反编译的源码</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/13.png" srcset="/img/loading.gif" lazyload class="">
-
-<p>点击编译，编译完成之后就可以调试了，可以看看人家的代码是怎么写的，如果代码存在混淆等情况，可能编译不成功，不过也不太影响我们测试，因为我们也主要是分析各个接口的东西；如果有加密什么的，能调试就很方便</p>
-<img src="/2022/11/17/%E6%B5%85%E8%B0%88%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/12.png" srcset="/img/loading.gif" lazyload class="">
-
-<h2 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h2><p>如果是要进行支付宝小程序测试，获取源码，大体和微信小程序差不多，仅仅是路径略微不同，支付宝小程序路径为</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">/data/data/com.eg.android.AlipayGphone/files/nebulaInstallApps<br></code></pre></td></tr></table></figure>
-
-<p>另外具体目录名为小程序<strong>tinyAppId值</strong>，其中的tar包即为源码文件</p>
-<p>iOS保存路径：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">/var/mobile/Containers/Data/Application/&#123;程序UUID&#125;/Library/WechatPrivate/&#123;⽤户ID&#125;/WeApp/LocalCache/release/&#123;⼩程序ID&#125;/<br></code></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过当前获取小程序源码包的方式，其实能极大的挖掘到部分漏洞信息，相比于流量分析，能够更多的查询到接口地址，从而造成一些未授权或者是信息泄露等漏洞</p>
-
-                
-              </div>
+              
             
             <hr/>
             <div>
@@ -580,6 +517,23 @@
   
 
 
+
+
+  
+  <script defer>
+    if (document.getElementById('hbePass')) {
+      Fluid.utils.waitElementLoaded('hbe-prefix', function() {
+        var hbePrefix = document.querySelector('hbe-prefix');
+        hbePrefix.parentElement.classList.add('markdown-body');
+        Fluid.utils.retry(function() {
+          if (Fluid.boot && Fluid.boot.refresh) {
+            Fluid.boot.refresh();
+            return true;
+          }
+        }, 100, 10);
+      })
+    }
+  </script>
 
 
   

